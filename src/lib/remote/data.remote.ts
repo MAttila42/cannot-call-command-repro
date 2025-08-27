@@ -31,3 +31,17 @@ export const addDataAlternative = command(
     await getData().refresh();
   }
 );
+
+// Or we can use only queries because they work from API endpoints
+export const addDataAlt2 = query(
+  z.string(),
+  async (title: string) => {
+    db.data.push({
+      id: db.data.length + 1,
+      title,
+      slug: '...',
+      published_at: new Date()
+    });
+    await getData().refresh();
+  }
+)

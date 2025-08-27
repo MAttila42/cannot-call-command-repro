@@ -3,9 +3,8 @@
 
   const randomWords = ['tree', 'river', 'mountain', 'desert', 'ocean', 'sky'];
 
-  async function addRandomPost() {
-    const randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
-    await addData(randomWord);
+  function getRandomWord() {
+    return randomWords[Math.floor(Math.random() * randomWords.length)];
   }
 </script>
 
@@ -14,4 +13,6 @@
   <h2>{item.title}</h2>
   <p>{item.slug}</p>
 {/each}
-<button onclick={addRandomPost}>Add post</button>
+<button onclick={() => addData(getRandomWord())}>Add post (remote command)</button>
+<button onclick={() => addData(getRandomWord())}>Add post (remote command + server function)</button>
+<button onclick={() => addData(getRandomWord())}>Add post (query abuse)</button>
